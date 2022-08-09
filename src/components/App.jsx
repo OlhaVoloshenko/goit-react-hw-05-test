@@ -1,16 +1,29 @@
-export const App = () => {
+import { Switch, Route } from 'react-router-dom';
+import AppBar from 'components/AppBar/AppBar';
+import Container from 'components/Container/Container';
+import AuthorsView from 'viewes/AuthorsView';
+import BooksView from 'viewes/BooksView';
+import HomeView from 'viewes/HomeView';
+import NotFoundView from 'viewes/NotFoundView';
+
+export default function App() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Container>
+      <AppBar />
+      <Switch>
+        <Route path="/" exact>
+          <HomeView />
+        </Route>
+        <Route path="/authors">
+          <AuthorsView />
+        </Route>
+        <Route path="/books">
+          <BooksView />
+        </Route>
+        <Route>
+          <NotFoundView />
+        </Route>
+      </Switch>
+    </Container>
   );
-};
+}
