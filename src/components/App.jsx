@@ -1,10 +1,11 @@
 import { Switch, Route } from 'react-router-dom';
-import AppBar from 'components/AppBar/AppBar';
-import Container from 'components/Container/Container';
-import AuthorsView from 'viewes/AuthorsView';
-import BooksView from 'viewes/BooksView';
-import HomeView from 'viewes/HomeView';
-import NotFoundView from 'viewes/NotFoundView';
+import AppBar from './AppBar/AppBar';
+import Container from './Container/Container';
+import HomeView from './views/HomeView';
+import AuthorsView from './views/AuthorsView';
+import BooksView from './views/BooksView';
+import BookDetailsView from './views/BookDetailsView';
+import NotFoundView from './views/NotFoundView';
 
 export default function App() {
   return (
@@ -17,8 +18,11 @@ export default function App() {
         <Route path="/authors">
           <AuthorsView />
         </Route>
-        <Route path="/books">
+        <Route path="/books" exact>
           <BooksView />
+        </Route>
+        <Route path="/books/:bookId">
+          <BookDetailsView />
         </Route>
         <Route>
           <NotFoundView />
